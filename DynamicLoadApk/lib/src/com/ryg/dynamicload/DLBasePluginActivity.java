@@ -19,7 +19,6 @@
 package com.ryg.dynamicload;
 
 import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
@@ -45,9 +44,9 @@ import com.ryg.utils.DLConstants;
 
 /**
  * note: can use that like this.
- * 
- * @see {@link DLBasePluginActivity.that}
+ *
  * @author renyugang
+ * @see {@link DLBasePluginActivity#that}
  */
 public class DLBasePluginActivity extends Activity implements DLPlugin {
 
@@ -363,9 +362,9 @@ public class DLBasePluginActivity extends Activity implements DLPlugin {
 
     /**
      * @param dlIntent
-     * @return may be {@link #START_RESULT_SUCCESS},
-     *         {@link #START_RESULT_NO_PKG}, {@link #START_RESULT_NO_CLASS},
-     *         {@link #START_RESULT_TYPE_ERROR}
+     * @return may be {@link DLPluginManager#START_RESULT_SUCCESS},
+     * {@link DLPluginManager#START_RESULT_NO_PKG}, {@link DLPluginManager#START_RESULT_NO_CLASS},
+     * {@link DLPluginManager#START_RESULT_TYPE_ERROR}
      */
     public int startPluginActivity(DLIntent dlIntent) {
         return startPluginActivityForResult(dlIntent, -1);
@@ -373,9 +372,9 @@ public class DLBasePluginActivity extends Activity implements DLPlugin {
 
     /**
      * @param dlIntent
-     * @return may be {@link #START_RESULT_SUCCESS},
-     *         {@link #START_RESULT_NO_PKG}, {@link #START_RESULT_NO_CLASS},
-     *         {@link #START_RESULT_TYPE_ERROR}
+     * @return may be {@link DLPluginManager#START_RESULT_SUCCESS},
+     * {@link DLPluginManager#START_RESULT_NO_PKG}, {@link DLPluginManager#START_RESULT_NO_CLASS},
+     * {@link DLPluginManager#START_RESULT_TYPE_ERROR}
      */
     public int startPluginActivityForResult(DLIntent dlIntent, int requestCode) {
         if (mFrom == DLConstants.FROM_EXTERNAL) {
@@ -385,7 +384,7 @@ public class DLBasePluginActivity extends Activity implements DLPlugin {
         }
         return mPluginManager.startPluginActivityForResult(that, dlIntent, requestCode);
     }
-    
+
     public int startPluginService(DLIntent dlIntent) {
         if (mFrom == DLConstants.FROM_EXTERNAL) {
             if (dlIntent.getPluginPackage() == null) {
@@ -394,6 +393,7 @@ public class DLBasePluginActivity extends Activity implements DLPlugin {
         }
         return mPluginManager.startPluginService(that, dlIntent);
     }
+
     public int stopPluginService(DLIntent dlIntent) {
         if (mFrom == DLConstants.FROM_EXTERNAL) {
             if (dlIntent.getPluginPackage() == null) {
@@ -402,7 +402,7 @@ public class DLBasePluginActivity extends Activity implements DLPlugin {
         }
         return mPluginManager.stopPluginService(that, dlIntent);
     }
-    
+
     public int bindPluginService(DLIntent dlIntent, ServiceConnection conn, int flags) {
         if (mFrom == DLConstants.FROM_EXTERNAL) {
             if (dlIntent.getPluginPackage() == null) {
@@ -411,11 +411,11 @@ public class DLBasePluginActivity extends Activity implements DLPlugin {
         }
         return mPluginManager.bindPluginService(that, dlIntent, conn, flags);
     }
-    
+
     public int unBindPluginService(DLIntent dlIntent, ServiceConnection conn) {
         if (mFrom == DLConstants.FROM_EXTERNAL) {
             if (dlIntent.getPluginPackage() == null)
-            dlIntent.setPluginPackage(mPluginPackage.packageName);
+                dlIntent.setPluginPackage(mPluginPackage.packageName);
         }
         return mPluginManager.unBindPluginService(that, dlIntent, conn);
     }

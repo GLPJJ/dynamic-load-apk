@@ -35,5 +35,5 @@ public interface DLAttachable {
      *            and {@see DLBasePluginFragmentActivity}
      * @param pluginManager DLPluginManager instance, manager the plugins
      */
-    public void attach(DLPlugin proxyActivity, DLPluginManager pluginManager);
+    void attach(DLPlugin proxyActivity, DLPluginManager pluginManager);
 }

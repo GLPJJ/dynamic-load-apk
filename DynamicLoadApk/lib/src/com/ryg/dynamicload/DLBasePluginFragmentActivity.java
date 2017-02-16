@@ -46,7 +46,7 @@ import com.ryg.utils.DLConstants;
 
 public class DLBasePluginFragmentActivity extends FragmentActivity implements DLPlugin {
 
-    private static final String TAG = "DLBasePluginFragmentActivity";
+    private static final String TAG = "DLBasePluginFA";
 
     /**
      * 代理FragmentActivity，可以当作Context来使用，会根据需要来决定是否指向this
@@ -357,8 +357,8 @@ public class DLBasePluginFragmentActivity extends FragmentActivity implements DL
 
     /**
      * @param dlIntent
-     * @return may be {@link #START_RESULT_SUCCESS}, {@link #START_RESULT_NO_PKG},
-     *         {@link #START_RESULT_NO_CLASS}, {@link #START_RESULT_TYPE_ERROR}
+     * @return may be {@link DLPluginManager#START_RESULT_SUCCESS}, {@link DLPluginManager#START_RESULT_NO_PKG},
+     *         {@link DLPluginManager#START_RESULT_NO_CLASS}, {@link DLPluginManager#START_RESULT_TYPE_ERROR}
      */
     public int startPluginActivity(DLIntent dlIntent) {
         return startPluginActivityForResult(dlIntent, -1);
@@ -366,8 +366,8 @@ public class DLBasePluginFragmentActivity extends FragmentActivity implements DL
 
     /**
      * @param dlIntent
-     * @return may be {@link #START_RESULT_SUCCESS}, {@link #START_RESULT_NO_PKG},
-     *         {@link #START_RESULT_NO_CLASS}, {@link #START_RESULT_TYPE_ERROR}
+     * @return may be {@link DLPluginManager#START_RESULT_SUCCESS}, {@link DLPluginManager#START_RESULT_NO_PKG},
+     *         {@link DLPluginManager#START_RESULT_NO_CLASS}, {@link DLPluginManager#START_RESULT_TYPE_ERROR}
      */
     public int startPluginActivityForResult(DLIntent dlIntent, int requestCode) {
         if (mFrom == DLConstants.FROM_EXTERNAL) {

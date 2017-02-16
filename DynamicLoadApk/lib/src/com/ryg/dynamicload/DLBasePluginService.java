@@ -34,7 +34,7 @@ public class DLBasePluginService extends Service implements DLServicePlugin {
     private DLPluginPackage mPluginPackage;
     protected Service that = this;
     protected int mFrom = DLConstants.FROM_INTERNAL;
-    
+
     @Override
     public void attach(Service proxyService, DLPluginPackage pluginPackage) {
         // TODO Auto-generated method stub
@@ -44,11 +44,11 @@ public class DLBasePluginService extends Service implements DLServicePlugin {
         that = mProxyService;
         mFrom = DLConstants.FROM_EXTERNAL;
     }
-    
+
     protected boolean isInternalCall() {
         return mFrom == DLConstants.FROM_INTERNAL;
     }
-    
+
     @Override
     public IBinder onBind(Intent intent) {
         // TODO Auto-generated method stub
@@ -66,7 +66,7 @@ public class DLBasePluginService extends Service implements DLServicePlugin {
     public int onStartCommand(Intent intent, int flags, int startId) {
         // TODO Auto-generated method stub
         LOG.d(TAG, TAG + " onStartCommand");
-        return 0;
+        return Service.START_STICKY_COMPATIBILITY;
     }
 
     @Override
@@ -91,7 +91,7 @@ public class DLBasePluginService extends Service implements DLServicePlugin {
     public void onTrimMemory(int level) {
         // TODO Auto-generated method stub
         LOG.d(TAG, TAG + " onTrimMemory");
-        
+
     }
 
     @Override
